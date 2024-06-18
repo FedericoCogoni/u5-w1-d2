@@ -1,4 +1,4 @@
-package FedericoCogoni.u5_w1_d1.entities;
+package FedericoCogoni.u5_w1_d2.entities;
 
 import lombok.*;
 

@@ -1,10 +1,13 @@
-package FedericoCogoni.u5_w1_d1.entities;
+package FedericoCogoni.u5_w1_d2.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
-@Getter
+@Component
 @AllArgsConstructor
+@Getter
 public class Menu {
 
     private List<Topping> toppings;
@@ -27,7 +30,6 @@ public class Menu {
         System.out.println("Drinks");
         System.out.println();
         this.drinks.forEach(System.out::println);
-
 
     }
 }

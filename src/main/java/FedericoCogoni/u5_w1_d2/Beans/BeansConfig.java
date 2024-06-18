@@ -1,14 +1,12 @@
-package FedericoCogoni.u5_w1_d1.Beans;
+package FedericoCogoni.u5_w1_d2.Beans;
 
 
-import FedericoCogoni.u5_w1_d1.entities.Drink;
-import FedericoCogoni.u5_w1_d1.entities.Menu;
-import FedericoCogoni.u5_w1_d1.entities.Pizza;
-import FedericoCogoni.u5_w1_d1.entities.Topping;
+import FedericoCogoni.u5_w1_d2.Enums.OrderStatus;
+import FedericoCogoni.u5_w1_d2.Enums.TableStatus;
+import FedericoCogoni.u5_w1_d2.entities.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -85,14 +83,39 @@ public class BeansConfig {
 
     }
 
-    @Bean
+    /*@Bean
     Menu getMenu() {
         List<Topping> toppings = Arrays.asList(getTomato(), getCheese(), getHam(), getPineapple(), getSalami(), getOnions());
         List<Drink> drinks = Arrays.asList(getLemonade(), getWater(), getWine());
         List<Pizza> pizzas = Arrays.asList(getMargheritaPizza(), getHawaiianPizza(), getSalamiPizza());
         return new Menu(toppings, drinks, pizzas);
+    }*/
+
+    @Bean
+    Table table1() {
+        return new Table(1, 8, TableStatus.FREE);
     }
 
+    @Bean
+    Table table2() {
+        return new Table(2, 12, TableStatus.FREE);
+    }
 
+    @Bean
+    Table table3() {
+        return new Table(3, 2, TableStatus.OCCUPIED);
+    }
+
+    @Bean
+    Order order1(Table table1){
+        List<Product> products = List.of(getHawaiianPizza(), getSalamiPizza());
+        return new Order(table1, products, 12, 6, OrderStatus.IN_PROGRESS);
+    }
+
+    @Bean
+    Order order2(Table table2){
+        List<Product> products = List.of(getWater(), getSalamiPizza(), getLemonade(), getWine(), getHawaiianPizza(), getMargheritaPizza(), getWater());
+        return new Order(table2, products, 324, 4, OrderStatus.IN_PROGRESS);
+    }
 
 }
